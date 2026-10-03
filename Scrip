@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CENA — Inscription</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #123b6d;
+      color: white;
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,.12);
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      background: white;
+      color: #123b6d;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    header h1 {
+      margin-top: 10px;
+      font-size: 21px;
+    }
+
+    header p {
+      margin-top: 5px;
+      font-size: 13px;
+      opacity: .9;
+    }
+
+    .container {
+      width: 94%;
+      max-width: 650px;
+      margin: 20px auto;
+    }
+
+    .progress {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      gap: 5px;
+    }
+
+    .progress div {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      padding: 9px 3px;
+      border-radius: 8px;
+      background: #dce3ec;
+      color: #536174;
+    }
+
+    .progress .active {
+      background: #123b6d;
+      color: white;
+    }
+
+    .card {
+      background: white;
+      padding: 22px 17px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+      color: #123b6d;
+    }
+
+    .subtitle {
+      color: #697586;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: bold;
+      margin: 22px 0 12px;
+      color: #123b6d;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      margin-top: 13px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d5dce5;
+      border-radius: 10px;
+      outline: none;
+      font-size: 14px;
+      background: white;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #123b6d;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    button {
+      border: none;
+      border-radius: 11px;
+      padding: 14px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .next {
+      background: #123b6d;
+      color: white;
+    }
+
+    .back {
+      background: #e8edf3;
+      color: #26364d;
+    }
+
+    .submit {
+      background: #16844a;
+      color: white;
+    }
+
+    .summary {
+      background: #f6f8fb;
+      padding: 15px;
+      border-radius: 12px;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    .success {
+      text-align: center;
+      padding: 20px 5px;
+    }
+
+    .success-icon {
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
+
+    .numero {
+      background: #eef5ff;
+      color: #123b6d;
+      padding: 14px;
+      border-radius: 10px;
+      margin: 18px 0;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .error {
+      background: #ffecec;
+      color: #a51d1d;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 15px;
+      display: none;
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #7a8492;
+      padding: 20px;
+    }
+
+    @media print {
+      header,
+      .progress,
+      .buttons,
+      footer {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+      }
+
+      .card {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">CENA</div>
+
+  <h1>
+    Collège Évangélique Le Normalien de L’Arcahaie
+  </h1>
+
+  <p>
+    Plateforme d'inscription scolaire
+  </p>
+</header>
+
+
+<div class="container">
+
+  <!-- PROGRESSION -->
+
+  <div class="progress">
+
+    <div class="active" id="p1">
+      Élève
+    </div>
+
+    <div id="p2">
+      Parents
+    </div>
+
+    <div id="p3">
+      Responsable
+    </div>
+
+    <div id="p4">
+      Validation
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+
+    <!-- ========================= -->
+    <!-- ÉTAPE 1 : ÉLÈVE -->
+    <!-- ========================= -->
+
+    <div class="step active" id="step1">
+
+      <h2>
+        Informations de l'élève
+      </h2>
+
+      <p class="subtitle">
+        Veuillez remplir les informations de l'élève.
+      </p>
+
+
+      <label>Nom</label>
+      <input
+        id="nom"
+        type="text"
+        required
+      >
+
+
+      <label>Prénom</label>
+      <input
+        id="prenom"
+        type="text"
+        required
+      >
+
+
+      <label>Date de naissance</label>
+      <input
+        id="date_naissance"
+        type="date"
+        required
+      >
+
+
+      <label>Lieu de naissance</label>
+      <input
+        id="lieu_naissance"
+        type="text"
+        required
+      >
+
+
+      <label>Sexe</label>
+
+      <select
+        id="sexe"
+        required
+      >
+
+        <option value="">
+          Sélectionner
+        </option>
+
+        <option value="Masculin">
+          Masculin
+        </option>
+
+        <option value="Féminin">
+          Féminin
+        </option>
+
+      </select>
+
+
+      <label>Nationalité</label>
+
+      <input
+        id="nationalite"
+        type="text"
+        value="Haïtienne"
+        required
+      >
+
+
+      <label>
+        NISU
+        <small>(facultatif)</small>
+      </label>
+
+      <input
+        id="nisu"
+        type="text"
+      >
+
+
+      <label>Adresse</label>
+
+      <input
+        id="adresse"
+        type="text"
+        required
+      >
+
+
+      <label>Téléphone</label>
+
+      <input
+        id="telephone"
+        type="tel"
+        required
+      >
+
+
+      <label>Classe demandée</label>
+
+      <select
+        id="classe"
+        required
+      >
+
+        <option value="">
+          Sélectionner la classe
+        </option>
+
+        <option>
+          1ère année fondamentale
+        </option>
+
+        <option>
+          2ème année fondamentale
+        </option>
+
+        <option>
+          3ème année fondamentale
+        </option>
+
+        <option>
+          4ème année fondamentale
+        </option>
+
+        <option>
+          5ème année fondamentale
+        </option>
+
+        <option>
+          6ème année fondamentale
+        </option>
+
+        <option>
+          7ème année fondamentale
+        </option>
+
+        <option>
+          8ème année fondamentale
+        </option>
+
+        <option>
+          9ème année fondamentale
+        </option>
+
+        <option>
+          NS1
+        </option>
+
+        <option>
+          NS2
+        </option>
+
+        <option>
+          NS3
+        </option>
+
+        <option>
+          NS4
+        </option>
+
+      </select>
+
+
+      <label>
+        Ancienne école
+        <small>(facultatif)</small>
+      </label>
+
+      <input
+        id="ancienne_ecole"
+        type="text"
+      >
+
+
+      <label>
+        Année scolaire
+      </label>
+
+      <input
+        id="annee_scolaire"
+        type="text"
+        placeholder="Ex : 2026-2027"
+        required
+      >
+
+
+      <div class="buttons">
+
+        <button
+          class="next"
+          onclick="nextStep(1)"
+        >
+          Continuer →
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- ÉTAPE 2 : PARENTS -->
+    <!-- ========================= -->
+
+    <div class="step" id="step2">
+
+      <h2>
+        Informations des parents
+      </h2>
+
+      <p class="subtitle">
+        Veuillez renseigner les informations disponibles.
+      </p>
+
+
+      <div class="section-title">
+        Père
+      </div>
+
+
+      <label>
+        Nom du père
+      </label>
+
+      <input
+        id="pere_nom"
+        type="text"
+      >
+
+
+      <label>
+        Prénom du père
+      </label>
+
+      <input
+        id="pere_prenom"
+        type="text"
+      >
+
+
+      <label>
+        État du père
+      </label>
+
+      <select id="pere_etat">
+
+        <option value="">
+          Sélectionner
+        </option>
+
+        <option>
+          Vivant
+        </option>
+
+        <option>
+          Décédé
+        </option>
+
+      </select>
+
+
+      <label>
+        Profession du père
+      </label>
+
+      <input
+        id="pere_profession"
+        type="text"
+      >
+
+
+      <label>
+        Téléphone du père
+      </label>
+
+      <input
+        id="pere_telephone"
+        type="tel"
+      >
+
+
+
+      <div class="section-title">
+        Mère
+      </div>
+
+
+      <label>
+        Nom de la mère
+      </label>
+
+      <input
+        id="mere_nom"
+        type="text"
+      >
+
+
+      <label>
+        Prénom de la mère
+      </label>
+
+      <input
+        id="mere_prenom"
+        type="text"
+      >
+
+
+      <label>
+        État de la mère
+      </label>
+
+      <select id="mere_etat">
+
+        <option value="">
+          Sélectionner
+        </option>
+
+        <option>
+          Vivante
+        </option>
+
+        <option>
+          Décédée
+        </option>
+
+      </select>
+
+
+      <label>
+        Profession de la mère
+      </label>
+
+      <input
+        id="mere_profession"
+        type="text"
+      >
+
+
+      <label>
+        Téléphone de la mère
+      </label>
+
+      <input
+        id="mere_telephone"
+        type="tel"
+      >
+
+
+      <div class="buttons">
+
+        <button
+          class="back"
+          onclick="showStep(1)"
+        >
+          ← Retour
+        </button>
+
+        <button
+          class="next"
+          onclick="nextStep(2)"
+        >
+          Continuer →
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- ÉTAPE 3 : RESPONSABLE -->
+    <!-- ========================= -->
+
+    <div class="step" id="step3">
+
+      <h2>
+        Responsable / Tuteur
+      </h2>
+
+      <p class="subtitle">
+        Informations de la personne responsable de l'élève.
+      </p>
+
+
+      <label>
+        Nom
+      </label>
+
+      <input
+        id="responsable_nom"
+        type="text"
+        required
+      >
+
+
+      <label>
+        Prénom
+      </label>
+
+      <input
+        id="responsable_prenom"
+        type="text"
+        required
+      >
+
+
+      <label>
+        Lien avec l'élève
+      </label>
+
+      <select
+        id="responsable_lien"
+        required
+      >
+
+        <option value="">
+          Sélectionner
+        </option>
+
+        <option>
+          Père
+        </option>
+
+        <option>
+          Mère
+        </option>
+
+        <option>
+          Tuteur
+        </option>
+
+        <option>
+          Tutrice
+        </option>
+
+        <option>
+          Frère
+        </option>
+
+        <option>
+          Sœur
+        </option>
+
+        <option>
+          Autre
+        </option>
+
+      </select>
+
+
+      <label>
+        Téléphone
+      </label>
+
+      <input
+        id="responsable_telephone"
+        type="tel"
+        required
+      >
+
+
+      <label>
+        Profession
+      </label>
+
+      <input
+        id="responsable_profession"
+        type="text"
+      >
+
+
+      <label>
+        Adresse
+      </label>
+
+      <input
+        id="responsable_adresse"
+        type="text"
+      >
+
+
+      <div class="buttons">
+
+        <button
+          class="back"
+          onclick="showStep(2)"
+        >
+          ← Retour
+        </button>
+
+        <button
+          class="next"
+          onclick="nextStep(3)"
+        >
+          Validation →
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- ÉTAPE 4 : VALIDATION -->
+    <!-- ========================= -->
+
+    <div class="step" id="step4">
+
+      <h2>
+        Validation de l'inscription
+      </h2>
+
+      <p class="subtitle">
+        Vérifiez les informations avant de confirmer.
+      </p>
+
+
+      <div
+        class="summary"
+        id="summary"
+      ></div>
+
+
+      <div
+        id="error"
+        class="error"
+      ></div>
+
+
+      <div class="buttons">
+
+        <button
+          class="back"
+          onclick="showStep(3)"
+        >
+          ← Modifier
+        </button>
+
+        <button
+          class="submit"
+          onclick="submitForm()"
+        >
+          ✓ Confirmer l'inscription
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- SUCCÈS -->
+    <!-- ========================= -->
+
+    <div
+      class="step"
+      id="success"
+    >
+
+      <div class="success">
+
+        <div class="success-icon">
+          ✅
+        </div>
+
+        <h2>
+          Inscription enregistrée
+        </h2>
+
+        <p class="subtitle">
+          L'inscription de l'élève a été enregistrée avec succès.
+        </p>
+
+
+        <div
+          class="numero"
+          id="numero"
+        ></div>
+
+
+        <p style="font-size:13px;">
+          Veuillez conserver ce numéro d'inscription.
+        </p>
+
+
+        <div class="buttons">
+
+          <button
+            class="next"
+            onclick="window.print()"
+          >
+            🖨️ Imprimer
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<footer>
+  © CENA — Collège Évangélique Le Normalien de L’Arcahaie
+</footer>
+
+
+<script>
+
+  /* ==================================
+     SUPABASE
+  ================================== */
+
+  const SUPABASE_URL =
+    "https://kwgtozypuqopwxltezzi.supabase.co";
+
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3Z3RvenlwdXFvcHd4bHRlenppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA5NjA0MTksImV4cCI6MjEwNjUzNjQxOX0.yfGQKOA1V4MjXZE8aZdQ_AOyJTR8tqOnJe8G4cxIg10";
+
+
+  /* ==================================
+     AFFICHER UNE ÉTAPE
+  ================================== */
+
+  function showStep(step) {
+
+    document
+      .querySelectorAll(".step")
+      .forEach(function(el) {
+
+        el.classList.remove("active");
+
+      });
+
+
+    document
+      .getElementById("step" + step)
+      .classList.add("active");
+
+
+    document
+      .querySelectorAll(".progress div")
+      .forEach(function(el) {
+
+        el.classList.remove("active");
+
+      });
+
+
+    document
+      .getElementById("p" + step)
+      .classList.add("active");
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* ==================================
+     PASSER À L'ÉTAPE SUIVANTE
+  ================================== */
+
+  function nextStep(step) {
+
+
+    if (step === 1) {
+
+      const required = [
+
+        "nom",
+        "prenom",
+        "date_naissance",
+        "lieu_naissance",
+        "sexe",
+        "nationalite",
+        "adresse",
+        "telephone",
+        "classe",
+        "annee_scolaire"
+
+      ];
+
+
+      for (const id of required) {
+
+        const element =
+          document.getElementById(id);
+
+
+        if (!element.value.trim()) {
+
+          alert(
+            "Veuillez remplir tous les champs obligatoires."
+          );
+
+          element.focus();
+
+          return;
+
+        }
+
+      }
+
+    }
+
+
+    if (step === 3) {
+
+      const required = [
+
+        "responsable_nom",
+        "responsable_prenom",
+        "responsable_lien",
+        "responsable_telephone"
+
+      ];
+
+
+      for (const id of required) {
+
+        const element =
+          document.getElementById(id);
+
+
+        if (!element.value.trim()) {
+
+          alert(
+            "Veuillez remplir tous les champs obligatoires."
+          );
+
+          element.focus();
+
+          return;
+
+        }
+
+      }
+
+
+      showSummary();
+
+      showStep(4);
+
+      return;
+
+    }
+
+
+    showStep(step + 1);
+
+  }
+
+
+  /* ==================================
+     RÉCUPÉRER UNE VALEUR
+  ================================== */
+
+  function value(id) {
+
+    return document
+      .getElementById(id)
+      .value
+      .trim();
+
+  }
+
+
+  /* ==================================
+     AFFICHER LE RÉSUMÉ
+  ================================== */
+
+  function showSummary() {
+
+    const html = `
+
+      <strong>ÉLÈVE</strong><br><br>
+
+      <b>Nom :</b> ${value("nom")}<br>
+
+      <b>Prénom :</b> ${value("prenom")}<br>
+
+      <b>Date de naissance :</b>
+      ${value("date_naissance")}<br>
+
+      <b>Lieu de naissance :</b>
+      ${value("lieu_naissance")}<br>
+
+      <b>Sexe :</b>
+      ${value("sexe")}<br>
+
+      <b>Nationalité :</b>
+      ${value("nationalite")}<br>
+
+      <b>NISU :</b>
+      ${value("nisu") || "Non renseigné"}<br>
+
+      <b>Adresse :</b>
+      ${value("adresse")}<br>
+
+      <b>Téléphone :</b>
+      ${value("telephone")}<br>
+
+      <b>Classe :</b>
+      ${value("classe")}<br>
+
+      <b>Ancienne école :</b>
+      ${value("ancienne_ecole") || "Non renseignée"}<br>
+
+      <b>Année scolaire :</b>
+      ${value("annee_scolaire")}<br>
+
+
+      <br>
+
+      <strong>PÈRE</strong><br><br>
+
+      <b>Nom :</b>
+      ${value("pere_nom") || "Non renseigné"}<br>
+
+      <b>Prénom :</b>
+      ${value("pere_prenom") || "Non renseigné"}<br>
+
+      <b>État :</b>
+      ${value("pere_etat") || "Non renseigné"}<br>
+
+      <b>Profession :</b>
+      ${value("pere_profession") || "Non renseignée"}<br>
+
+      <b>Téléphone :</b>
+      ${value("pere_telephone") || "Non renseigné"}<br>
+
+
+      <br>
+
+      <strong>MÈRE</strong><br><br>
+
+      <b>Nom :</b>
+      ${value("mere_nom") || "Non renseigné"}<br>
+
+      <b>Prénom :</b>
+      ${value("mere_prenom") || "Non renseigné"}<br>
+
+      <b>État :</b>
+      ${value("mere_etat") || "Non renseigné"}<br>
+
+      <b>Profession :</b>
+      ${value("mere_profession") || "Non renseignée"}<br>
+
+      <b>Téléphone :</b>
+      ${value("mere_telephone") || "Non renseigné"}<br>
+
+
+      <br>
+
+      <strong>RESPONSABLE</strong><br><br>
+
+      <b>Nom :</b>
+      ${value("responsable_nom")}<br>
+
+      <b>Prénom :</b>
+      ${value("responsable_prenom")}<br>
+
+      <b>Lien :</b>
+      ${value("responsable_lien")}<br>
+
+      <b>Téléphone :</b>
+      ${value("responsable_telephone")}<br>
+
+      <b>Profession :</b>
+      ${value("responsable_profession") || "Non renseignée"}<br>
+
+      <b>Adresse :</b>
+      ${value("responsable_adresse") || "Non renseignée"}
+
+    `;
+
+
+    document
+      .getElementById("summary")
+      .innerHTML = html;
+
+  }
+
+
+  /* ==================================
+     GÉNÉRER NUMÉRO D'INSCRIPTION
+  ================================== */
+
+  function generateNumero() {
+
+    const year =
+      new Date().getFullYear();
+
+
+    const random =
+      Math.floor(
+        100000 +
+        Math.random() * 900000
+      );
+
+
+    return `CENA-${year}-${random}`;
+
+  }
+
+
+  /* ==================================
+     ENREGISTRER DANS SUPABASE
+  ================================== */
+
+  async function submitForm() {
+
+    const errorBox =
+      document.getElementById("error");
+
+
+    errorBox.style.display = "none";
+
+
+    const numero =
+      generateNumero();
+
+
+    const data = {
+
+      numero_inscription: numero,
+
+      nom: value("nom"),
+
+      prenom: value("prenom"),
+
+      date_naissance:
+        value("date_naissance"),
+
+      lieu_naissance:
+        value("lieu_naissance"),
+
+      sexe:
+        value("sexe"),
+
+      nationalite:
+        value("nationalite"),
+
+      nisu:
+        value("nisu") || null,
+
+      adresse:
+        value("adresse"),
+
+      telephone:
+        value("telephone"),
+
+      classe:
+        value("classe"),
+
+      ancienne_ecole:
+        value("ancienne_ecole") || null,
+
+      annee_scolaire:
+        value("annee_scolaire"),
+
+
+      pere_nom:
+        value("pere_nom") || null,
+
+      pere_prenom:
+        value("pere_prenom") || null,
+
+      pere_etat:
+        value("pere_etat") || null,
+
+      pere_profession:
+        value("pere_profession") || null,
+
+      pere_telephone:
+        value("pere_telephone") || null,
+
+
+      mere_nom:
+        value("mere_nom") || null,
+
+      mere_prenom:
+        value("mere_prenom") || null,
+
+      mere_etat:
+        value("mere_etat") || null,
+
+      mere_profession:
+        value("mere_profession") || null,
+
+      mere_telephone:
+        value("mere_telephone") || null,
+
+
+      responsable_nom:
+        value("responsable_nom"),
+
+      responsable_prenom:
+        value("responsable_prenom"),
+
+      responsable_lien:
+        value("responsable_lien"),
+
+      responsable_telephone:
+        value("responsable_telephone"),
+
+      responsable_profession:
+        value("responsable_profession") || null,
+
+      responsable_adresse:
+        value("responsable_adresse") || null
+
+    };
+
+
+    try {
+
+      const response = await fetch(
+
+        `${SUPABASE_URL}/rest/v1/inscriptions`,
+
+        {
+
+          method: "POST",
+
+          headers: {
+
+            "apikey":
+              SUPABASE_ANON_KEY,
+
+            "Authorization":
+              `Bearer ${SUPABASE_ANON_KEY}`,
+
+            "Content-Type":
+              "application/json",
+
+            "Prefer":
+              "return=minimal"
+
+          },
+
+          body:
+            JSON.stringify(data)
+
+        }
+
+      );
+
+
+      if (!response.ok) {
+
+        const errorText =
+          await response.text();
+
+        throw new Error(errorText);
+
+      }
+
+
+      document
+        .getElementById("numero")
+        .textContent =
+        "N° d'inscription : " + numero;
+
+
+      document
+        .querySelectorAll(".step")
+        .forEach(function(el) {
+
+          el.classList.remove("active");
+
+        });
+
+
+      document
+        .getElementById("success")
+        .classList.add("active");
+
+
+      document
+        .querySelectorAll(".progress div")
+        .forEach(function(el) {
+
+          el.classList.remove("active");
+
+        });
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    catch (error) {
+
+      console.error(error);
+
+
+      errorBox.textContent =
+        "Une erreur est survenue lors de l'enregistrement. Vérifiez la connexion à Supabase et réessayez.";
+
+
+      errorBox.style.display =
+        "block";
+
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
